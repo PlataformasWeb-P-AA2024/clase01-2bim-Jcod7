@@ -20,7 +20,8 @@ class Provincia(Base):
         return "Provincia: id=%d, nombre='%s', codigo_division_politica_administrativa_provincia='%s'" % (
             self.id, self.nombre, self.codigo_division_politica_administrativa_provincia
         )
-    
+        
+    # A cada provincia perdile el número de docentes
     def numero_docentes_provincia(self):
         total_docentes_provincia = 0
         for canton in self.cantones:
@@ -32,7 +33,8 @@ class Provincia(Base):
                 total_docentes_canton += total_docentes_parroquia
             total_docentes_provincia += total_docentes_canton 
         return total_docentes_provincia
-    
+
+    # A cada provincia preguntar la lista de parroquias
     def lista_parroquias(self):
         parroquias_list = []
         for canton in self.cantones:
@@ -82,12 +84,15 @@ class Parroquia(Base):
             self.codigo_division_politica_administrativa_parroquia, 
             self.codigo_canton
         )
+
+    # A cada parroaquia preguntar el número de establecimientos
     def numero_establecimientos_parroquia(self):
         numero = 0
         for establecimiento in self.establecimientos:
             numero += 1
         return numero
-    
+
+    # A cada parroquia preguntarle los tipos jornada de los establecimientos
     def lista_parroquias(self):
         parroquias_list = []
         for canton in self.cantones:
